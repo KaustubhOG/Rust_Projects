@@ -1,7 +1,27 @@
 use std::io::{self, Write};
 
+fn print_banner() {
+    println!("\n");
+    println!("╔════════════════════════════════════════════════════════════════╗");
+    println!("║                                                                ║");
+    println!("║  ████████╗ ██████╗ ██████╗  ██████╗         ██████╗██╗     ██╗ ║");
+    println!("║  ╚══██╔══╝██╔═══██╗██╔══██╗██╔═══██╗       ██╔════╝██║     ██║ ║");
+    println!("║     ██║   ██║   ██║██║  ██║██║   ██║       ██║     ██║     ██║ ║");
+    println!("║     ██║   ██║   ██║██║  ██║██║   ██║       ██║     ██║     ██║ ║");
+    println!("║     ██║   ╚██████╔╝██████╔╝╚██████╔╝▄█╗    ╚██████╗███████╗██║ ║");
+    println!("║     ╚═╝    ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝     ╚═════╝╚══════╝╚═╝ ║");
+    println!("║                                                                ║");
+    println!("║              Your Simple Task Management Tool                  ║");
+    println!("║                                                                ║");
+    println!("╚════════════════════════════════════════════════════════════════╝");
+    println!("\n");
+}
+
 fn main() {
     let mut todos: Vec<(String, bool)> = Vec::new(); // (task, is_done)
+
+    // Print banner once at startup
+    print_banner();
 
     loop {
         println!("\n==== TODO CLI ====");
@@ -34,7 +54,7 @@ fn main() {
                 } else {
                     println!("\nYour tasks:");
                     for (i, (task, done)) in todos.iter().enumerate() {
-                        let status = if *done { "Done" } else { "Pending" };
+                        let status = if *done { "✓ Done" } else { "○ Pending" };
                         println!("{}. {} [{}]", i + 1, task, status);
                     }
                 }
